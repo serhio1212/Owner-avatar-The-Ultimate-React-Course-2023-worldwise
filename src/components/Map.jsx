@@ -21,7 +21,7 @@ function Map() {
   const mapLng = searchParams.get("lng");
 
   useEffect(() => {
-    (mapLat && mapLng)
+    mapLat && mapLng
       ? setMapPosition([mapLat, mapLng])
       : "setMapPosition([40,0])";
   }, [mapLat, mapLng]);
