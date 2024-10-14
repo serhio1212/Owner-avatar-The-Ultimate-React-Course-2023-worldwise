@@ -10,27 +10,58 @@ import {
   useMapEvent,
 } from "react-leaflet";
 import { useCities } from "../contexts/CitiesContext";
+import { useGeolocation } from "../hooks/useGeolocation.js";
+import Button from "./Button.jsx";
 
 import styles from "./Map.module.css";
+
 
 function Map() {
   const { cities } = useCities();
   const [mapPosition, setMapPosition] = useState([40, 0]);
-  const [searchParams, setSearchParams] = useSearchParams();
+  const [searchParams] = useSearchParams();
   const mapLat = searchParams.get("lat");
   const mapLng = searchParams.get("lng");
+  const {
+    isLoading: isLoadingPosition,
+    position: geolocationPosition,
+    getPosition,
+  } = useGeolocation();
 
   useEffect(() => {
-    mapLat && mapLng
-      ? setMapPosition([mapLat, mapLng])
-      : "setMapPosition([40,0])";
+    mapLat && mapLng ? setMapPosition([mapLat, mapLng]) : (null)
   }, [mapLat, mapLng]);
+
+  useEffect(function() {
+    if (geolocationPosition) setMapPosition([geolocationPosition.lat, geolocationPosition.lng]);
+  }, [geolocationPosition]);
+
+
+  function ChangeCenter({ position }) {
+    const map = useMap();
+    map.setView(position);
+    // return null;
+  }
+
+  ChangeCenter.propTypes = {
+    position: PropTypes.arrayOf(PropTypes.number).isRequired,
+  };
+
+  function DetectClick() {
+    const navigate = useNavigate();
+    useMapEvent({
+      click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
+    });
+  }
 
   return (
     <div className={styles.mapContainer}>
+      {!geolocationPosition && <Button type="position" onClick={getPosition}>
+        {isLoadingPosition ? "Laoding..." : "Use your position"}
+      </Button>}
       <MapContainer
         center={mapPosition}
-        zoom={13}
+        zoom={6}
         scrollWheelZoom={true}
         className={styles.map}
       >
@@ -54,23 +85,6 @@ function Map() {
       </MapContainer>
     </div>
   );
-}
-
-function ChangeCenter({ position }) {
-  const map = useMap();
-  map.setView(position);
-  return null;
-}
-
-ChangeCenter.propTypes = {
-  position: PropTypes.arrayOf(PropTypes.number).isRequired,
-};
-
-function DetectClick() {
-  const navigate = useNavigate();
-  useMapEvent({
-    click: (e) => navigate(`form?lat=${e.latlng.lat}&lng=${e.latlng.lng}`),
-  });
 }
 
 export default Map;
