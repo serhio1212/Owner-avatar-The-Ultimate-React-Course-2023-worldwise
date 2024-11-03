@@ -1,9 +1,4 @@
-import {
-  createContext,
-  useEffect,
-  useContext,
-  useReducer,
-} from "react";
+import { createContext, useEffect, useContext, useReducer } from "react";
 
 const BASE_URL = "http://localhost:9000";
 const CitiesContext = createContext({
@@ -12,8 +7,8 @@ const CitiesContext = createContext({
 });
 const initialState = {
   cities: [],
-  isLoading: false,
   currentCity: {},
+  isLoading: false,
   error: "",
 };
 
@@ -23,7 +18,7 @@ function reducer(state, action) {
       return { ...state, isLoading: true };
 
     case "cities/loaded":
-      return { ...state, isLoading: false, cities: action.payload, };
+      return { ...state, isLoading: false, cities: action.payload };
 
     case "city/loaded":
       return { ...state, isLoading: false, currentCity: action.payload };

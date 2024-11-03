@@ -37,51 +37,15 @@
       }
     },
     {
-      "id": "5a99",
-      "cityName": "Mengibar",
+      "id": "2947",
+      "cityName": "Tarancon",
       "country": "Spain",
       "emoji": "🇪🇸",
-      "date": "2024-10-19T23:08:05.526Z",
+      "date": "2024-10-26T22:56:58.210Z",
       "notes": "",
       "position": {
-        "lat": "37.99616267972814",
-        "lng": "-3.8232421875000004"
-      }
-    },
-    {
-      "id": "c3c6",
-      "cityName": "Gasteiz / Vitoria",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-10-20T13:31:53.672Z",
-      "notes": "",
-      "position": {
-        "lat": "42.85985981506279",
-        "lng": "-2.7026367187500004"
-      }
-    },
-    {
-      "id": "1411",
-      "cityName": "Plasencia",
-      "country": "Spain",
-      "emoji": "🇪🇸",
-      "date": "2024-10-20T13:32:01.597Z",
-      "notes": "",
-      "position": {
-        "lat": "39.94343646197423",
-        "lng": "-6.218261718750001"
-      }
-    },
-    {
-      "id": "38ff",
-      "cityName": "Friedland",
-      "country": "Germany",
-      "emoji": "🇩🇪",
-      "date": "2024-10-20T22:30:48.887Z",
-      "notes": "",
-      "position": {
-        "lat": "52.05249047600099",
-        "lng": "14.216308593750002"
+        "lat": "40.04443758460859",
+        "lng": "-3.0102539062500004"
       }
     }
   ]
