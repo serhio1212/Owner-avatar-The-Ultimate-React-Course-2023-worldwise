@@ -2,9 +2,9 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import PageNav from "../components/PageNav.jsx";
 import { useAuth } from "../contexts/FakeAuthContext.jsx";
+import Button from "../components/Button.jsx";
 
 import styles from "./Login.module.css";
-import Button from "../components/Button.jsx";
 
 export default function Login() {
   // PRE-FILL FOR DEV PURPOSES
